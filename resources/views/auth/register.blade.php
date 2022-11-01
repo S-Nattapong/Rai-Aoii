@@ -16,9 +16,9 @@
 
             <!-- Name -->
             <div>
-                <x-label for="name" :value="__('Name')" />
+                <x-label for="name" :value="__('Name Lastname')" />
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" maxlength="100" required autofocus />
             </div>
 
             <!-- Email Address -->
@@ -45,6 +45,30 @@
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
                                 name="password_confirmation" required />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="id_cardcode" :value="__('ID Card Code')" />
+
+                <x-input id="id_cardcode" class="block mt-1 w-full"
+                                type="text" pattern="[0-9]{13}"
+                                name="id_cardcode" required />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="phone_no" :value="__('Phone Number : Format 123-456-7890')" />
+
+                <x-input id="phone_no" class="block mt-1 w-full"
+                                type="tel"
+                                name="phone_no" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="address" :value="__('Address')" />
+
+                <textarea id="address" class="block mt-1 w-full"
+                                type="text"
+                                name="address" required maxlength="200"></textarea>
             </div>
 
             <div class="flex items-center justify-end mt-4">

@@ -23,6 +23,9 @@ class UserSeeder extends Seeder
             $user->role = 'ADMIN';
             $user->email = 'admin@example.com';
             $user->password = Hash::make('adminpass');
+            $user->id_cardcode = "1234567890123";
+            $user->phone_no = "081-234-5678";
+            $user->address = "Bangkok";
             $user->save();
         }
 
@@ -34,39 +37,9 @@ class UserSeeder extends Seeder
             $user->email = 'staff01@example.com';
             $user->password = Hash::make('staffpass');
             $user->organization_id = "1";
-            $user->save();
-        }
-
-        $user = User::where('email', 'staff02@example.com')->first();
-        if (!$user) {
-            $user = new User;
-            $user->name = "Anya F.";
-            $user->role = 'STAFF';
-            $user->email = 'staff02@example.com';
-            $user->password = Hash::make('staffpass');
-            $user->organization_id = "2";
-            $user->save();
-        }
-
-        $user = User::where('email', 'staff03@example.com')->first();
-        if (!$user) {
-            $user = new User;
-            $user->name = "Ainz G.";
-            $user->role = 'STAFF';
-            $user->email = 'staff03@example.com';
-            $user->password = Hash::make('staffpass');
-            $user->organization_id = "3";
-            $user->save();
-        }
-
-        $user = User::where('email', 'staff04@example.com')->first();
-        if (!$user) {
-            $user = new User;
-            $user->name = "Sora S.";
-            $user->role = 'STAFF';
-            $user->email = 'staff04@example.com';
-            $user->password = Hash::make('staffpass');
-            $user->organization_id = "4";
+            $user->id_cardcode = "123333333333";
+            $user->phone_no = "071-234-5678";
+            $user->address = "Bangkok";
             $user->save();
         }
 
@@ -77,9 +50,12 @@ class UserSeeder extends Seeder
             $user->role = 'USER';
             $user->email = 'user01@example.com';
             $user->password = Hash::make('userpass');
+            $user->id_cardcode = "2221234567890";
+            $user->phone_no = "061-234-5678";
+            $user->address = "Bangkok";
             $user->save();
         }
 
-        User::factory(5)->create();
+        User::factory(1)->create();
     }
 }

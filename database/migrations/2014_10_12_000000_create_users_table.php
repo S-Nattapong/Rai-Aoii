@@ -20,6 +20,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable(); // timestamp, datetime
             $table->string('password'); // varchar(60)
             $table->rememberToken(); // 'remember_token
+            $table->string('id_cardcode')->unique();
+            $table->string('phone_no');
+            $table->string('address');
             $table->timestamps(); // 'created_at', 'updated_at'
         });
     }
