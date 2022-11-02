@@ -48,7 +48,7 @@
             </div>
 
             <div class="mt-4">
-                <x-label for="id_cardcode" :value="__('ID Card Code')" />
+                <x-label for="id_cardcode" :value="__('ID Card Code : Number 13 Character ')" />
 
                 <x-input id="id_cardcode" class="block mt-1 w-full"
                                 type="text" pattern="[0-9]{13}" :value="old('id_cardcode')"

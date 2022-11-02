@@ -18,7 +18,7 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-        $arr = array("Waiting", "Received", "Progress", "Completed", "Return");
+        $arr = array("Waiting", "Progress", "Completed", "Cancel");
         return [
             'user_id' => User::inRandomOrder()->first()->id,
             'title' => fake()->realText(30),

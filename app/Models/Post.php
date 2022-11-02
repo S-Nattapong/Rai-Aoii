@@ -44,11 +44,10 @@ class Post extends Model
     }
 
     public function statusTranslator() {
-        if ($this->status === "Waiting") return "กำลังส่งเรื่อง";
-        else if ($this->status === "Received") return "รับเรื่องแล้ว";
-        else if ($this->status === "Progress") return "กำลังดำเนินการ";
-        else if ($this->status === "Completed") return "เสร็จสิ้น";
-        else return "ส่งเรื่องกลับ";
+        if ($this->status === "Waiting") return "กำลังรอผู้ผลิตมาประเมิณข้อเสนอ";
+        else if ($this->status === "Progress") return "กำลังประเมิณข้อเสนอ";
+        else if ($this->status === "Completed") return "ยอมรับข้อเสนอ";
+        else return "ปฎิเสธข้อเสนอ";
     }
 
     public function tagsConcat() {

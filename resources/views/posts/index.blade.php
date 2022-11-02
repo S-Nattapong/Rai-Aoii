@@ -16,8 +16,6 @@
                         &nbsp;สถานะ: {{ $post->statusTranslator() }}&nbsp;
                         @if($post->status === "Waiting")
                             <span style="color: #B9B9B9" class="material-symbols-outlined">radio_button_checked</span>
-                        @elseif($post->status === "Received")
-                            <span style="color: black" class="material-symbols-outlined">radio_button_checked</span>
                         @elseif($post->status === "Progress")
                             <span style="color: #f6bf00" class="material-symbols-outlined">radio_button_checked</span>
                         @elseif($post->status === "Completed")
