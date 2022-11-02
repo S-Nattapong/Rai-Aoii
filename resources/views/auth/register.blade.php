@@ -51,7 +51,7 @@
                 <x-label for="id_cardcode" :value="__('ID Card Code')" />
 
                 <x-input id="id_cardcode" class="block mt-1 w-full"
-                                type="text" pattern="[0-9]{13}"
+                                type="text" pattern="[0-9]{13}" :value="old('id_cardcode')"
                                 name="id_cardcode" required />
             </div>
 
@@ -59,7 +59,7 @@
                 <x-label for="phone_no" :value="__('Phone Number : Format 123-456-7890')" />
 
                 <x-input id="phone_no" class="block mt-1 w-full"
-                                type="tel"
+                                type="tel" :value="old('phone_no')"
                                 name="phone_no" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required />
             </div>
 
@@ -68,7 +68,7 @@
 
                 <textarea id="address" class="block mt-1 w-full"
                                 type="text"
-                                name="address" required maxlength="200"></textarea>
+                                name="address" required maxlength="200">{{old('address')}}</textarea>
             </div>
 
             <div class="flex items-center justify-end mt-4">

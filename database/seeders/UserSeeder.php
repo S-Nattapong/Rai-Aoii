@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
             $user->email = 'staff01@example.com';
             $user->password = Hash::make('staffpass');
             $user->organization_id = "1";
-            $user->id_cardcode = "123333333333";
+            $user->id_cardcode = "1233333333333";
             $user->phone_no = "071-234-5678";
             $user->address = "Bangkok";
             $user->save();

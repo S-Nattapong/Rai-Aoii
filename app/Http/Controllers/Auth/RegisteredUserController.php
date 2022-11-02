@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use App\Rules\CheckUniqueIdCardCode;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -37,7 +37,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'id_cardcode'=>['required','string', 'max:13','min:13'],
+            'id_cardcode'=>['required','string', 'max:13','min:13',new CheckUniqueIdCardCode()],
             'phone_no' =>['required','string', 'max:12','min:12'],
             'address'=> ['required', 'string', 'max:200']
         ]);
