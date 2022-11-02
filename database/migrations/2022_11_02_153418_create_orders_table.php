@@ -13,8 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\Organization::class)->nullable();
+        Schema::create('orders', function (Blueprint $table) {
+            $table->id();
+            $table->string('description');
+            $table->string('address');
+            $table->date('order_time');
+            $table->double('money',9,2);
+            $table->string('shop_name');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeignIdFor(\App\Models\Organization::class);
-        });
+        Schema::dropIfExists('orders');
     }
 };

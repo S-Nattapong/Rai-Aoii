@@ -1,8 +1,7 @@
 <?php
 
 namespace Database\Factories;
-
-use App\Models\Organization;
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -22,10 +21,11 @@ class PostFactory extends Factory
         return [
             'user_id' => User::inRandomOrder()->first()->id,
             'title' => fake()->realText(30),
-            'description' => fake()->realText(200),
-            'view_count' => fake()->numberBetween(0, 100000),
-            'like_count' => fake()->numberBetween(0, 50000),
-            'organization_id' => Organization::inRandomOrder()->first()->id,
+            'desired' => Carbon::yesterday(),
+            'quantity' => fake()->numberBetween(1, 1000),
+            'deal_money' => fake()->numberBetween(1, 50000),
+            'deposit_money' => fake()->numberBetween(1, 50000),
+            'producer_id' => User::inRandomOrder()->first()->id,
             'status' => $arr[array_rand($arr)]
         ];
     }

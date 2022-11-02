@@ -14,7 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\User::class)->after('id');
+           // $table->foreignIdFor(\App\Models\User::class)->after('id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -26,7 +28,8 @@ return new class extends Migration
     public function down()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->dropForeignIdFor(\App\Models\User::class);
+          // $table->dropForeignIdFor(\App\Models\User::class);
+          $table->dropColumn('user_id');
         });
     }
 };

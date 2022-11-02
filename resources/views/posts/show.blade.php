@@ -42,9 +42,6 @@
         </div>
 
 
-        <p class="text-gray-900 font-normal p-2 mb-8">
-            {{ $post->description }}
-        </p>
 
         @if(!is_null($post->picture_path))
             <div class="relative flex items-center justify-center">
@@ -53,7 +50,7 @@
         @endif
     </article>
 
-    @can('is_your_duty', $post)
+    @can('is_admin',$post)
     <section class="mt-8 mx-16">
         <div class="relative py-4">
             <div class="absolute inset-0 flex items-center">
@@ -92,12 +89,6 @@
                         {{--                        <option value="Progress">กำลังดำเนินการ</option>--}}
                         {{--                        <option value="Completed">ดำเนินการเสร็จสิ้น</option>--}}
                         {{--                        <option value="Return">ถูกตีกลับ</option>--}}
-                    </select>
-                    <select name="organization" id="organization" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option value="{{ $post->organization->id }}" selected>{{ $post->organization->name }}</option>
-                        @foreach(\App\Models\Organization::get() as $organization)
-                            <option value="{{ $organization->id }}">{{ $organization->name }}</option>
-                        @endforeach
                     </select>
                 </div>
                 {{--                    <button type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Cyan to Blue</button>--}}

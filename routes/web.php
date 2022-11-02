@@ -32,8 +32,6 @@ Route::get('/pages', [\App\Http\Controllers\PageController::class, 'index'])
 
 Route::resource('/posts', \App\Http\Controllers\PostController::class);
 
-Route::resource('/organize', \App\Http\Controllers\OrganizationController::class);
 
 Route::resource('/user', \App\Http\Controllers\UserController::class);
 
-Route::resource('/tags', \App\Http\Controllers\TagController::class);

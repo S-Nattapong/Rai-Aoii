@@ -1,11 +1,11 @@
 <?php
 
 namespace Database\Seeders;
-
+use App\Models\Order;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class ReportSeeder extends Seeder
+class OrderSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class ReportSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Order::factory(5)->create();
     }
 }

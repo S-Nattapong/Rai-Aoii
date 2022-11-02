@@ -99,11 +99,8 @@ class PostPolicy
         return $user->isUser();
     }
 
-    public function organization_list(User $user) {
-        return $user->isStaff() or $user->isAdmin();
+    public function is_admin(User $user, Post $post) {
+        return $user->isAdmin();
     }
 
-    public function is_your_duty(User $user, Post $post) {
-        return $user->organization_id === $post->organization_id or $user->isAdmin();
-    }
 }

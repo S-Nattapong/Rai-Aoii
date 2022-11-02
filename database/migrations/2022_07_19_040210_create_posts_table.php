@@ -16,9 +16,12 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
-            $table->integer('view_count')->default(0);
-            $table->integer('like_count')->default(0);
+            $table->date('desired');
+            $table->double('quantity',6,2)->default(0);
+            $table->double('deal_money',9,2)->default(0);
+            $table->double('deposit_money',9,2)->default(0);
+            $table->unsignedBigInteger('producer_id')->nullable()->default(null);
+            $table->foreign('producer_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

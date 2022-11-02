@@ -14,10 +14,6 @@ class Post extends Model
      * + ฟังก์ชัน tags() คืนค่า ความสัมพันธ์ belongsToMany
      * + attribute tags คืนค่า collection ของ Tag ที่ผูกกับ Post นี้
      */
-    public function tags()
-    {
-        return $this->belongsToMany(Tag::class);
-    }
 
     public function user()
     {
@@ -29,14 +25,7 @@ class Post extends Model
      * + ฟังก์ชัน comments() คืนค่า ความสัมพันธ์ hasMany
      * + attribute comments คืนค่า Collection ของ Comment ที่ผูกกับ Post นี้
      */
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
 
-    public function organization() {
-        return $this->belongsTo(Organization::class);
-    }
 
     public function statusChecker(string $str) {
         if ($this->status === $str) return true;
@@ -50,28 +39,18 @@ class Post extends Model
         else return "ปฎิเสธข้อเสนอ";
     }
 
-    public function tagsConcat() {
-        $tags_name = "";
-        foreach ($this->tags as $tag) {
-//            dd($tag->id);
-            $tag_name = Tag::find($tag->id)->name;
-            if ($tags_name === "") $tags_name = $tag_name;
-            else $tags_name = $tags_name.",".$tag_name;
-        }
-        return $tags_name;
-    }
 
-    public function scopeAdvertise($query)
-    {
-        return $query->where('like_count', '<', 1000)
-                     ->where('view_count', '>', 70000);
-    }
+    // public function scopeAdvertise($query)
+    // {
+    //     return $query->where('like_count', '<', 1000)
+    //                  ->where('view_count', '>', 70000);
+    // }
 
-    public function scopePopular($query, $like_count, $view_count)
-    {
-        return $query->where('like_count', '>=', $like_count)
-                     ->where('view_count', '>=', $view_count);
-    }
+    // public function scopePopular($query, $like_count, $view_count)
+    // {
+    //     return $query->where('like_count', '>=', $like_count)
+    //                  ->where('view_count', '>=', $view_count);
+    // }
 
     public function scopeFilterTitle($query, $search)
     {

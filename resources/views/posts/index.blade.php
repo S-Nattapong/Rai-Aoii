@@ -4,7 +4,7 @@
 @section('content')
     <section class="mx-8">
         <h1 class="text-3xl mx-4 mt-6">
-            รายงานยอดนิยม
+            ข้อเสนอ
         </h1>
         <div class="my-1 px-8 py-2 flex flex-wrap justify-between space-y-6">
             @foreach($posts->sortByDesc('like_count') as $post)
