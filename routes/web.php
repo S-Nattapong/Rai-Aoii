@@ -35,3 +35,7 @@ Route::resource('/posts', \App\Http\Controllers\PostController::class);
 
 Route::resource('/user', \App\Http\Controllers\UserController::class);
 
+Route::resource('/tools', \App\Http\Controllers\ToolController::class);
+
+Route::resource('/orders', \App\Http\Controllers\OrderController::class);
+
