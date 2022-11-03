@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('title');
             $table->date('desired');
             $table->double('quantity',6,2)->default(0);
-            $table->double('deal_money',9,2)->default(0);
-            $table->double('deposit_money',9,2)->default(0);
+            $table->integer('deal_money')->default(0);
+            $table->integer('deposit_money')->default(0);
             $table->unsignedBigInteger('producer_id')->nullable()->default(null);
             $table->foreign('producer_id')->references('id')->on('users');
             $table->timestamps();

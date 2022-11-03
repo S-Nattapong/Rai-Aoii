@@ -53,8 +53,11 @@ class PostController extends Controller
         $this->authorize('create', Post::class);
 
         $validated = $request->validate([
-            'title' => ['required', 'min:5', 'max:255']
-    
+            'title' => ['required', 'min:5', 'max:100'],
+            'quantity' => ['required', 'min:1', 'max:8'],
+            'deposit_money' => ['required', 'min:1','lte:deal_money'],
+            'deal_money' => ['required', 'min:1'],
+            'desired' => ['']
         ]);
 
         $post = new Post();
@@ -62,6 +65,10 @@ class PostController extends Controller
         $post->title = $request->input('title');
 //        $post->user_id = Auth::user()->id;
         $post->user_id = $request->user()->id;
+        $post->quantity =$request->input('quantity');
+        $post->deal_money = $request->input('deal_money');
+        $post->deposit_money = $request->input('deposit_money');
+        $post->desired = $request->input('desired');
 
 //        dd($request->input('organization'));
 //        $organization = Organization::find($request->input('organization'));
@@ -76,27 +83,6 @@ class PostController extends Controller
     }
 
 
-    private function uploadPicture(Request $request) {
-/*        $uploadedFile = $request->get('image');
-//        dd($uploadedFile);
-//        dd(time().$uploadedFile->getClientOriginalName());
-//        dd(Carbon::now()->format('Y_m_d_His'));
-//        $filename = time().$uploadedFile->getClientOriginalName();
-        $filename = Carbon::now()->format('Y_m_d_His');
-//        dd($filename, $uploadedFile);
-
-        Storage::disk('local')->putFileAs(
-            'files/'.$filename,
-            $uploadedFile,
-            $filename
-        );*/
-        if (is_null($request->file('upload')))
-            return null;
-        $path = $request->file('upload')->store('public/files');
-        $path = trim(strstr($path,"files"));
-//        dd($path);
-        return $path;
-    }
 
     /**
      * Display the specified resource.

@@ -26,7 +26,7 @@
                     </p>
                     </h5>
                     <p class="mb-2">
-                        รายงานโดย  {{ $post->user->name }}
+                        ข้อเสนอโดย  {{ $post->user->name }}
                     </p>
                 </a>
             @endforeach

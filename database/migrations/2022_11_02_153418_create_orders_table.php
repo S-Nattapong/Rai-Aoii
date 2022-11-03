@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('address');
             $table->date('order_time');
-            $table->double('money',9,2);
+            $table->integer('money');
             $table->string('shop_name');
             $table->timestamps();
         });
