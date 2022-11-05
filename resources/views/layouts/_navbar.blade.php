@@ -23,14 +23,22 @@
                     <li>
                         <a href="{{ route('posts.index') }}"
                            class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'posts.index') current-page @endif" >
-                            รายงานทั้งหมด
+                            ขอเสนอทั้งหมด
                         </a>
                     </li>
                     @can('create', \App\Models\Post::class)
                         <li>
                             <a href="{{ route('posts.create') }}"
                                class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'posts.create') current-page @endif">
-                                เขียนรายงานใหม่
+                                สร้างข้อเสนอ
+                            </a>
+                        </li>
+                    @endcan
+                    @can('admin', \App\Models\Tool::class)
+                        <li>
+                            <a href="{{ route('tools.index') }}"
+                               class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'tools.create') current-page @endif">
+                                อุปกรณ์ทั้งหมด
                             </a>
                         </li>
                     @endcan

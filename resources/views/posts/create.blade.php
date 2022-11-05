@@ -38,7 +38,7 @@
                         {{ $errors->first('quantity') }}
                     </p>
                 @endif
-                <input name="quantity" id="quantity" type="number" min="1" step="0.5"
+                <input name="quantity" id="quantity" type="number" min="1" step="0.5" max="9999"
                        class="bg-gray-50 border @error('quantity') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        value="{{ old('quantity') }}"
                        placeholder="" required onkeyup="mult(this.value)">

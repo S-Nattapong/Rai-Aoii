@@ -54,10 +54,10 @@ class PostController extends Controller
 
         $validated = $request->validate([
             'title' => ['required', 'min:5', 'max:100'],
-            'quantity' => ['required', 'min:1', 'max:8'],
+            'quantity' => ['required', 'min:1', 'max:7'],
             'deposit_money' => ['required', 'min:1','lte:deal_money'],
             'deal_money' => ['required', 'min:1'],
-            'desired' => ['']
+            'desired' => ['required','after:now']
         ]);
 
         $post = new Post();
@@ -159,6 +159,12 @@ class PostController extends Controller
     public function updateStatus(Request $request, Post $post) {
 //        dd($request->get('status'));
         $post->status = $request->get('status');
+        if($request->get('status') == "Completed" ||$request->get('status') == "Cancel"){
+        $validated = $request->validate([
+            'reason' => ['required', 'min:1', 'max:200']
+        ]);
+        $post->reason = $request->input('reason');
+        }
         $post->save();
         return redirect()->route('posts.show', ['post' => $post->id]);
     }

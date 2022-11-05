@@ -17,9 +17,9 @@ Route::get('/', function () {
     return redirect()->route('posts.index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
@@ -32,6 +32,5 @@ Route::get('/pages', [\App\Http\Controllers\PageController::class, 'index'])
 
 Route::resource('/posts', \App\Http\Controllers\PostController::class);
 
-
 Route::resource('/user', \App\Http\Controllers\UserController::class);
-
+Route::resource('/tools', \App\Http\Controllers\ToolController::class);
