@@ -27,10 +27,15 @@ require __DIR__.'/auth.php';
 Route::post('/posts/{post}/status', [\App\Http\Controllers\PostController::class, 'updateStatus'])
     ->name('posts.status.update');
 
-Route::get('/pages', [\App\Http\Controllers\PageController::class, 'index'])
-    ->name('pages.index');
+// Route::get('/pages', [\App\Http\Controllers\PageController::class, 'index'])
+//     ->name('pages.index');
+Route::get('/tools/{tool}/update', [\App\Http\Controllers\ToolController::class, 'showUpdateTool'])
+    ->name('tools.update.quantity');
+Route::post('/tools/{tool}/updatequantity',[\App\Http\Controllers\ToolController::class, 'updateToolQuantity'])
+->name('tools.update.history');
 
 Route::resource('/posts', \App\Http\Controllers\PostController::class);
 
 Route::resource('/user', \App\Http\Controllers\UserController::class);
 Route::resource('/tools', \App\Http\Controllers\ToolController::class);
+Route::resource('/historys', \App\Http\Controllers\HistoryController::class);

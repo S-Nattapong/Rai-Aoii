@@ -29,18 +29,18 @@ class UserSeeder extends Seeder
             $user->save();
         }
 
-        $user = User::where('email', 'staff01@example.com')->first();
-        if (!$user) {
-            $user = new User;
-            $user->name = "Editar L.";
-            $user->role = 'STAFF';
-            $user->email = 'staff01@example.com';
-            $user->password = Hash::make('staffpass');
-            $user->id_cardcode = "1233333333333";
-            $user->phone_no = "071-234-5678";
-            $user->address = "Bangkok";
-            $user->save();
-        }
+        // $user = User::where('email', 'staff01@example.com')->first();
+        // if (!$user) {
+        //     $user = new User;
+        //     $user->name = "Editar L.";
+        //     $user->role = 'STAFF';
+        //     $user->email = 'staff01@example.com';
+        //     $user->password = Hash::make('staffpass');
+        //     $user->id_cardcode = "1233333333333";
+        //     $user->phone_no = "071-234-5678";
+        //     $user->address = "Bangkok";
+        //     $user->save();
+        // }
 
         $user = User::where('email', 'user01@example.com')->first();
         if (!$user) {
@@ -55,6 +55,6 @@ class UserSeeder extends Seeder
             $user->save();
         }
 
-        User::factory(1)->create();
+        //User::factory(1)->create();
     }
 }

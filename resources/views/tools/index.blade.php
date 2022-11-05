@@ -27,15 +27,15 @@
                 <tr class="border-t">
 
                     <td class="py-3 px-6">
-                        <a href="{{ route('tools.show', ['tool' => $tool]) }}" class="text-center">
+                        <p>
                             {{$tool->id}}
-                        </a>
+                        </p>
                     </td>
 
 
                     <td class="pr-3">
                         <p>
-                            {{ $tool->name }} views
+                            {{ $tool->name }}
                         </p>
                     </td>
                     <td class="py-3 px-6">
@@ -46,7 +46,18 @@
                             {{$tool->type}}
                         </p>
                     </td>
+                        <td class="p-1">
+                        <a href="{{ route('tools.show', ['tool' => $tool]) }}" class="text-center">
+                            <button class="app-button mt-4" type="submit">แก้ไขอุปกรณ์</button>
+                        </a>
+                    </td>
 
+                    </td>
+                        <td class="p-1">
+                            <a href="{{ route('tools.update.quantity',['tool' => $tool])  }}" class="text-center">
+                            <button class="app-button mt-4" type="submit">อัพเดทจำนวนอุปกรณ์</button>
+                            </a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>

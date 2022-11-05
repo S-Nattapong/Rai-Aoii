@@ -42,6 +42,14 @@
                             </a>
                         </li>
                     @endcan
+                    @can('admin', \App\Models\History::class)
+                        <li>
+                            <a href="{{ route('historys.index') }}"
+                               class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'tools.create') current-page @endif">
+                                ประวัติการอัพเดทอุปกรณ์
+                            </a>
+                        </li>
+                    @endcan
                     @can('user_per', \App\Models\Post::class)
                         <li>
                             <a href="{{ route('user.index') }}"

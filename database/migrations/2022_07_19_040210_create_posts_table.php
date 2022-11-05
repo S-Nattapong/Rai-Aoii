@@ -21,8 +21,8 @@ return new class extends Migration
             $table->integer('deal_money')->default(0);
             $table->integer('deposit_money')->default(0);
             $table->string('reason')->nullable()->default(null);
-            $table->unsignedBigInteger('producer_id')->nullable()->default(null);
-            $table->foreign('producer_id')->references('id')->on('users');
+            // $table->unsignedBigInteger('producer_id')->nullable()->default(null);
+            // $table->foreign('producer_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

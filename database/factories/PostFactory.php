@@ -25,7 +25,6 @@ class PostFactory extends Factory
             'quantity' => fake()->numberBetween(1, 1000),
             'deal_money' => fake()->numberBetween(1, 50000),
             'deposit_money' => fake()->numberBetween(1, 50000),
-            'producer_id' => User::inRandomOrder()->first()->id,
             'status' => $arr[array_rand($arr)]
         ];
     }

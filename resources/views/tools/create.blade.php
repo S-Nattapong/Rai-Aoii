@@ -17,7 +17,7 @@
                 </label>
                 @if ($errors->has('name'))
                     <p class="text-red-600">
-                        {{ $errors->first('title') }}
+                        {{ $errors->first('name') }}
                     </p>
                 @endif
                 <input type="text" name="name" id="name"
@@ -33,7 +33,7 @@
                 </label>
                 @if ($errors->has('quantity'))
                     <p class="text-red-600">
-                        {{ $errors->first('title') }}
+                        {{ $errors->first('quantity') }}
                     </p>
                 @endif
                 <input type="number" name="quantity" type="number" id="quantity"
@@ -53,16 +53,17 @@
                     </p>
                 @endif
 
-                <select type="text" name="type" id="type">
-                    <option value="pesticide">pesticide</option>
-                    <option value="fertilizer">fertilizer</option>
-                    <option value="herbicide">herbicide</option>
-                    <option value="etc..">etc..</option>
+                <div class="grid grid-cols-2 gap-1"> 
+                    <select name="type" id="type" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="fertilizer">ปุ๋ย</option>
+                    <option value="pesticide">ยาฆ่าแมลง</option>
+                    <option value="herbicide">ยาฆ่าหญ้า</option>
+                    <option value="etc..">อื่น ๆ</option>
                 </select>
+                </div>
                
-            <div>
-                <button class="app-button" type="submit">ส่ง</button>
-            </div>
+                <button class="app-button mt-4" type="submit">ส่ง</button>
+            
         
         </form>
     

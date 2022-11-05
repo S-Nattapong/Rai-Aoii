@@ -20,8 +20,8 @@ class HistoryFactory extends Factory
         $arr = array("Increase", "Decrease","Create");
         return [
             'tool_id' => Tool::inRandomOrder()->first()->id,
-            'order_id' => Order::inRandomOrder()->first()->id,
-            'quantity' => fake()->numberBetween(1, 500),
+            'current_quantity' => fake()->numberBetween(1, 500),
+            'old_quantity' => fake()->numberBetween(1, 500),
             'status' => $arr[array_rand($arr)],
             'description' => fake()->realText(30)
         ];
