@@ -37,5 +37,7 @@ Route::resource('/user', \App\Http\Controllers\UserController::class);
 
 Route::resource('/tools', \App\Http\Controllers\ToolController::class);
 
+//Route::post('/tools/{tool}/edit',[\App\Http\Controllers\ToolController::class,'edit'] );
+
 Route::resource('/orders', \App\Http\Controllers\OrderController::class);
 

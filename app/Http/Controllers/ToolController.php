@@ -26,7 +26,7 @@ class ToolController extends Controller
 
         $validated = $request->validate([
             'name' => ['required', 'min:5', 'max:255'],
-            'quantity' => ['required', 'min:1'],  
+            'quantity' => ['required', 'min:1'],
         ]);
 
         $tool = new Tool();
@@ -37,7 +37,16 @@ class ToolController extends Controller
 
         $tool->save();
 
-        return redirect()->route('posts.index');
+        return redirect()->route('tools.index');
 
+    }
+
+    public function edit($id){
+        $tool = Tool::find($id)->first();
+        return view('tools.edit', ['tool' => $tool]);
+    }
+
+    public function show(Tool $tool){
+        return view('tools.show', ['tool' => $tool]);
     }
 }
