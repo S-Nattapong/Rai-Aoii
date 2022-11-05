@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\History;
 use App\Models\Post;
 use App\Models\Tool;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ToolController extends Controller
@@ -18,6 +20,10 @@ class ToolController extends Controller
     {
         $this->authorize('admin', Tool::class);
         return view('tools.create');
+    }
+
+    public function show($tool){
+        return view('tools.show', ['tool' => $tool]);
     }
 
     public function store(Request $request)
@@ -41,12 +47,25 @@ class ToolController extends Controller
 
     }
 
-    public function edit($id){
+    public function edit($id , Request $request){
         $tool = Tool::find($id)->first();
-        return view('tools.edit', ['tool' => $tool]);
+//         $history= History::find($tool_id)->first;
+        $history = $request->tool();
+        return view('tools.edit', ['tool' => $tool,'history'=>$history]);
     }
 
-    public function show(Tool $tool){
-        return view('tools.show', ['tool' => $tool]);
+    public function update(Request $request, $id)
+    {
+        $tool = Tool::find($id);
+        $this->authorize('update', $tool);
+
+        $tool->title = $request->input('name');
+        $tool->quantity = $request->input('quantity');
+        $tool->save();
+
+        return redirect()->route('tools.show', ['tool' => $tool->id]);
+
     }
+
+
 }

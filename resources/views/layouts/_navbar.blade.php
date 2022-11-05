@@ -46,25 +46,14 @@
                         </li>
                     @endcan
 
-
                     @can('admin', \App\Models\Tool::class)
                         <li>
-                            <a href="{{ route('orders.create') }}"
-                               class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'orders.create') current-page @endif">
-                                กรอกคำสั่งซื้อ
+                            <a href="{{ route('tools.index') }}"
+                               class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'tools.create') current-page @endif">
+                                คลังเก็บอุปกรณ์
                             </a>
                         </li>
                     @endcan
-                    @can('admin',\App\Models\Order::class)
-                        <li>
-                            <a href="{{route('orders.index')}}"
-                               class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'orders.index') current-page @endif">
-                                ข้อมูลประวัติการสั่งซื้อ
-                            </a>
-                        </li>
-                    @endcan
-
-
 
                     @can('user_per', \App\Models\Post::class)
                         <li>

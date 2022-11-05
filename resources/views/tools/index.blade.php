@@ -25,13 +25,13 @@
             <tbody class="m-2">
             @foreach($tools as $tool)
                 <tr class="border-t">
-                    <a href="{{ route('tools.show',['tool'=>$tool]) }}">
+
                     <td class="py-3 px-6">
-                        <p class="text-center hover:underline hover:text-gray-700">
+                        <a href="{{ route('tools.show', ['tool' => $tool]) }}" class="text-center">
                             {{$tool->id}}
-                        </p>
+                        </a>
                     </td>
-                    </a>
+
 
                     <td class="pr-3">
                         <p>
@@ -46,10 +46,7 @@
                             {{$tool->type}}
                         </p>
                     </td>
-                    <td class="py-3 px-6">
 
-                        <a href="{{route('tools.edit'),['tool' => $tool->id]}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline"> Edit </a>
-                    </td>
                 </tr>
             @endforeach
             </tbody>
