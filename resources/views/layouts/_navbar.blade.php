@@ -2,7 +2,7 @@
     <div class="container flex flex-wrap justify-between items-center mx-auto">
         <a href="{{ url('/') }}" class="flex items-center">
             <span class="self-center text-xl font-semibold whitespace-nowrap">
-                <p class="inline-flex text-3xl">&mu;</p>niversity Report
+                <img src="{{ URL::to('/assets/logo_nav.png')}}" alt="" style="width: 80px">
             </span>
         </a>
         <button data-collapse-toggle="navbar-default" type="button"
@@ -22,8 +22,8 @@
                     </li>
                     <li>
                         <a href="{{ route('posts.index') }}"
-                           class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'posts.index') current-page @endif" >
-                            ขอเสนอทั้งหมด
+                           class="block py-2 pr-4 pl-3 rounded md:p-0 @if(Route::currentRouteName() === 'posts.index') current-page @endif" >
+                            ข้อเสนอทั้งหมด
                         </a>
                     </li>
                     @can('create', \App\Models\Post::class)
@@ -37,7 +37,7 @@
                     @can('admin', \App\Models\Tool::class)
                         <li>
                             <a href="{{ route('tools.index') }}"
-                               class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'tools.create') current-page @endif">
+                               class="block py-2 pr-4 pl-3 rounded md:p-0 @if(Route::currentRouteName() === 'tools.index') current-page @endif">
                                 อุปกรณ์ทั้งหมด
                             </a>
                         </li>
@@ -45,7 +45,7 @@
                     @can('admin', \App\Models\History::class)
                         <li>
                             <a href="{{ route('historys.index') }}"
-                               class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline @if(Route::currentRouteName() === 'tools.create') current-page @endif">
+                               class="block py-2 pr-4 pl-3 rounded md:p-0 @if(Route::currentRouteName() === 'tools.create') current-page @endif">
                                 ประวัติการอัพเดทอุปกรณ์
                             </a>
                         </li>
@@ -65,16 +65,16 @@
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();"
                                     class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline">
-{{--                                {{ __('Log Out') }}--}}
+                                {{--                                {{ __('Log Out') }}--}}
                                 <span class="material-symbols-outlined">logout</span>
                             </button>
 
-{{--                            <x-dropdown-link :href="route('logout')"--}}
-{{--                                             onclick="event.preventDefault();--}}
-{{--                                                this.closest('form').submit();"--}}
-{{--                                             class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline">--}}
-{{--                                {{ __('Log Out') }}--}}
-{{--                            </x-dropdown-link>--}}
+                            {{--                            <x-dropdown-link :href="route('logout')"--}}
+                            {{--                                             onclick="event.preventDefault();--}}
+                            {{--                                                this.closest('form').submit();"--}}
+                            {{--                                             class="block py-2 pr-4 pl-3 rounded md:p-0 hover:underline">--}}
+                            {{--                                {{ __('Log Out') }}--}}
+                            {{--                            </x-dropdown-link>--}}
                         </form>
                     </li>
                 @else
@@ -95,4 +95,3 @@
         </div>
     </div>
 </nav>
-

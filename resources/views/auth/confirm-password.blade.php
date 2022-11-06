@@ -3,7 +3,7 @@
         <x-slot name="logo">
             <a href="/">
                 <span class="self-center text-xl font-semibold whitespace-nowrap">
-                    <p class="inline-flex text-3xl">&mu;</p>niversity Report
+                   <img src="{{ URL::to('/assets/logo_nav.png')}}" alt="" style="width: 100px">
                 </span>
             </a>
         </x-slot>
@@ -23,9 +23,9 @@
                 <x-label for="password" :value="__('Password')" />
 
                 <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+                         type="password"
+                         name="password"
+                         required autocomplete="current-password" />
             </div>
 
             <div class="flex justify-end mt-4">

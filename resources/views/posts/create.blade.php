@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <section class="mt-6 mx-8">
+    <section class="p-5 mt-6 mx-8 bg-slate-100 rounded-lg">
         <h1 class="text-3xl mb-6">
             จัดทำข้อเสนอ
         </h1>
@@ -52,7 +52,7 @@
                         {{ $errors->first('deposit_money') }}
                     </p>
                 @endif
-                <input name="deposit_money" id="deposit_money" type="number" min="1" 
+                <input name="deposit_money" id="deposit_money" type="number" min="1"
                        class="bg-gray-50 border @error('deposit_money') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        value="{{ old('deposit_money') }}"
                        placeholder="" required>
@@ -66,7 +66,7 @@
                         {{ $errors->first('deal_money') }}
                     </p>
                 @endif
-                <input name="deal_money" id="deal_money" type="number" min="1" 
+                <input name="deal_money" id="deal_money" type="number" min="1"
                        class="bg-gray-50 border @error('deal_money') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        value="{{ old('deal_money') }}"
                        placeholder="" required>
@@ -86,13 +86,13 @@
                        value="{{ old('desired') }}" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
                        placeholder="" required>
             </div>
-           
+
         <div>
                 <button class="app-button" type="submit">ส่ง</button>
             </div>
-        
+
         </form>
-    
+
     </section>
 
 @endsection

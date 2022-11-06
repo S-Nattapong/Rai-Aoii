@@ -12,8 +12,8 @@
             </button>
         </div>
 
-        <table class="w-full text-left text-gray-600 dark:text-gray-400">
-            <thead class="text-lg text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
+        <table class="w-full table-auto text-left text-gray-600 dark:text-gray-400">
+            <thead class="text-lg text-gray-700 bg-gray-200 dark:bg-gray-700 dark:text-gray-400 w-full">
             <tr>
                 <th scope="col" class="py-3 px-6 text-center">รหัสอุปกรณ์</th>
                 <th scope="col" class="py-3 px-6">ชื่ออุปกรณ์</th>
@@ -46,19 +46,15 @@
                             {{$tool->type}}
                         </p>
                     </td>
-                        <td class="p-1">
-                        <a href="{{ route('tools.show', ['tool' => $tool]) }}" class="text-center">
+                        <td class="p-3">
+                        <a href="{{ route('tools.show', ['tool' => $tool]) }}" class="text-center mx-3">
                             <button class="app-button mt-4" type="submit">แก้ไขอุปกรณ์</button>
                         </a>
-                    </td>
-
-                    </td>
-                        <td class="p-1">
                             <a href="{{ route('tools.update.quantity',['tool' => $tool])  }}" class="text-center">
-                            <button class="app-button mt-4" type="submit">อัพเดทจำนวนอุปกรณ์</button>
+                                <button class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900 mt-4" type="submit">อัพเดทจำนวนอุปกรณ์</button>
                             </a>
+                        </td>
                     </td>
-                </tr>
             @endforeach
             </tbody>
         </table>

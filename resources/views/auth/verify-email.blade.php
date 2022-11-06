@@ -3,7 +3,7 @@
         <x-slot name="logo">
             <a href="/">
                 <span class="self-center text-xl font-semibold whitespace-nowrap">
-                    <p class="inline-flex text-3xl">&mu;</p>niversity Report
+                    <img src="{{ URL::to('/assets/logo_nav.png')}}" alt="" style="width: 100px">
                 </span>
             </a>
         </x-slot>
