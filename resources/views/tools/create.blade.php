@@ -62,7 +62,7 @@
                         </select>
                     </di>
 
-                    <button class="app-button mt-4" type="submit">ส่ง</button>
+                    <button class="app-button mt-4" type="submit">บันทึก</button>
                 </div>
         </form>
 

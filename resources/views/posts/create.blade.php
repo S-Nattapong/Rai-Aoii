@@ -31,7 +31,7 @@
             </div>
             <div class="relative z-0 mb-6 w-full group">
                 <label for="quantity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                    ปริมาณออ้ยที่ต้องการ (หน่วยเป็นตัน ใส่เฉพาะตัวเลข)
+                    ปริมาณอ้อยที่ต้องการ (หน่วยเป็นตัน ใส่เฉพาะตัวเลข)
                 </label>
                 @if ($errors->has('quantity'))
                     <p class="text-red-600">
