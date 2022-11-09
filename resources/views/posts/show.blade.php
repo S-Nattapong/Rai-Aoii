@@ -7,7 +7,7 @@
             หัวข้อข้อเสนอ :{{ $post->title }}
         </h1>
         <div class="mb-4 justify-center items-center">
-            <p class="mt-2 bg-gray-100 text-gray-800 text-2xl font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
+            <p class="mt-2 text-gray-800 text-2xl font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
                 @if($post->status === "Waiting")
                     <span style="color: #B9B9B9" class="material-symbols-outlined">radio_button_checked</span>
                 @elseif($post->status === "Received")
@@ -22,45 +22,83 @@
                 &nbsp;สถานะข้อเสนอ: {{ $post->status }}
             </p>
         </div>
-        <div class="mx-32 grid grid-cols-2 gap-4">
+        <div class=" mx-28 gap-4 grid-cols-2 grid">
+            <div class="relative z-0 mb-6 w-full group">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                ชื่อลูกค้า
+            </label>
+                <input type="text" name="name" id="name" disabled
+                       class="bg-gray-50 border @error('name') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       value="{{ $post->user->name }}"
+                       placeholder="" required \>
+            </div>
+            <div class="relative z-0 mb-6 w-full group">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                เบอร์โทรลูกค้า
+            </label>
+            <input type="text" name="name" id="name" disabled
+                   class="bg-gray-50 border @error('name') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                   value="{{ $post->user->phone_no}}"
+                   placeholder="" required \>
+            </div>
 
-            <h5 class="text-xl mb-1">
-                ชื่อลูกค้า: {{ $post->user->name}}
-            </h5>
-
-            <h5 class="text-xl mb-1">
-                เบอร์โทรลูกค้า: {{ $post->user->phone_no}}
-            </h5>
-
-
-            <h5 class="text-xl mb-1">
-                เงินมัดจำ: {{ $post->deposit_money}} บาท
-            </h5>
-
-            <h5 class="text-xl mb-1">
-                เงินที่ต้องจ่ายทั้งหมดในข้อเสนอ: {{ $post->deal_money}} บาท
-            </h5>
-
-
-            <h5 class="text-xl mb-1">
-                ปริมาณอ้อยที่ต้องการ: {{ $post->quantity}} ตัน
-            </h5>
-
-            <h5 class="text-xl mb-1">
-                วันที่ต้องการอ้อย: {{ $post->desired}}
-            </h5>
-
-
-            <h5 class="text-xl mb-1">
-                ที่อยู่: {{ $post->user->address}}
-            </h5>
-
+            <div class="relative z-0 mb-6 w-full group">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                เงินมัดจำ
+            </label>
+            <input type="text" name="name" id="name" disabled
+                   class="bg-gray-50 border @error('name') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                   value="{{ $post->deposit_money}}"
+                   placeholder="" required \>
+            </div>
+            <div class="relative z-0 mb-6 w-full group">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                เงินที่ต้องจ่ายทั้งหมดในข้อเสนอ
+            </label>
+            <input type="text" name="name" id="name" disabled
+                   class="bg-gray-50 border @error('name') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                   value="{{ $post->deal_money}}"
+                   placeholder="" required \>
+            </div>
+            <div class="relative z-0 mb-6 w-full group">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                ปริมาณอ้อยที่ต้องการ
+            </label>
+            <input type="text" name="name" id="name" disabled
+                   class="bg-gray-50 border @error('name') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                   value="{{ $post->quantity}}"
+                   placeholder="" required \>
+            </div>
+            <div class="relative z-0 mb-6 w-full group">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                วันที่ต้องการอ้อย
+            </label>
+            <input type="text" name="name" id="name" disabled
+                   class="bg-gray-50 border @error('name') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                   value="{{ $post->desired}}"
+                   placeholder="" required \>
+            </div>
+            <div class="relative z-0 mb-6 w-full group col-span-2">
+            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                ที่อยู่
+            </label>
+            <textarea type="text" name="name" id="name" disabled
+                   class="bg-gray-50 border @error('name') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                   placeholder="">{{ $post->user->address}}
+            </textarea>
+            </div>
         </div>
+        <div class="relative z-0 mb-6 w-full group col-span-2">
         @if(!is_null($post->reason) && ($post->status == "Completed" || $post->status == "Cancel"))
-            <h5 class="text-xl mb-1">
-                เหตุผล (ผู้ผลิตตอบ): {{ $post->reason}}
-            </h5>
+                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                    เหตุผล (ผู้ผลิตตอบ)
+                </label>
+                <input type="text" name="name" id="name" disabled
+                       class="bg-gray-50 border @error('name') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       value="{{ $post->reason}}"
+                       placeholder="" required \>
         @endif
+        </div>
 
         @if(!is_null($post->picture_path))
             <div class="relative flex items-center justify-center">
@@ -94,7 +132,6 @@
             </div>
             <form action="{{ route('posts.status.update', ['post' => $post->id]) }}" method="post">
                 @csrf
-                {{--                @method('PUT')--}}
                 <div class="p-2 rounded">
                     <div class="p-2 ">
                     <label for="reason" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300 ">
@@ -124,7 +161,7 @@
                             @endif
                         </select>
                     </div>
-                    </div>  
+                    </div>
                     @if ($errors->has('reason') ||$errors->has('reason_etc'))
                         <p class="text-red-600">
                             โปรดใส่ข้อมูลเหตุผลที่ปฏิเสธให้ครบถ้วน ถ้าเป็นเหตุผลอื่น ๆ โปรดระบุเพิ่มเติม
@@ -172,11 +209,11 @@
     else if(ans.value == "Cancel" && x == 0){
         document.getElementById('r-main').hidden = false;
         document.getElementById('r-none').hidden = false;
-    
+
     }
     else if(ans.value == "Cancel"){
         document.getElementById('r-main').hidden = false;
-    
+
     }
     else if(ans.value == "อื่น ๆ"){
         document.getElementById('r-none').hidden = false;
@@ -201,7 +238,7 @@
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg>แก้ไขสถานะ</button>
             </div>
                     @endif
-                
+
             </form>
         </section>
     @endcan

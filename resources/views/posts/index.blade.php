@@ -13,7 +13,7 @@
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
                         {{ $post->title }}
                         <p class="absolute right-4 mt-2 text-gray-800 text-xl font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
-                        &nbsp;สถานะข้อเสนอ : {{ $post->status }}&nbsp;
+                        สถานะรับข้อเสนอ: &nbsp;{{ $post->status }}&nbsp;
                         @if($post->status === "Waiting")
                             <span style="color: #B9B9B9" class="material-symbols-outlined text weight-20 height-20">radio_button_checked</span>
                         @elseif($post->status === "Progress")

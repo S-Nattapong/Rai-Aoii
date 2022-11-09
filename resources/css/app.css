@@ -11,7 +11,7 @@
 }
 
 .current-page {
-    @apply text-black font-bold bg-blue-500 md:bg-transparent md:border-black md:border-b-2 ;
+    @apply text-white font-bold  md:bg-transparent md:border-white md:border-b-2 ;
 }
 
 .material-icons .md-8 { font-size: 8px; }
