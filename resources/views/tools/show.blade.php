@@ -1,8 +1,8 @@
 @extends('layouts.main')
 @section('content')
-    <section class="p-5 mt-6 mx-8 bg-slate-100 rounded-lg">
+    <section class="p-10 mt-6 mx-72 bg-gray-100 rounded-lg shadow-lg">
         <div class="relative z-0 mb-6 w-full group">
-            <h1 class="text-3xl mx-4 mt-6">
+            <h1 class="text-3xl mt-6">
                 รายละเอียดอุปกรณ์ที่จะแก้ไข
             </h1>
         </div>
@@ -13,13 +13,14 @@
                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     ชื่ออุปกรณ์
                 </label>
-                @if ($errors->has('name'))
-                    <p class="text-red-600">
+
+                    <p class="text-red-600 min-h-[1em]">
+                        @if ($errors->has('name'))
                         โปรดใส่ข้อมูลชื่ออุปกรณ์ให้ครบท้วนและมีตัวอักษรไม่เกิน 30 ตัวอักษร
+                        @endif
                     </p>
-                @endif
                 <input type="text" name="name" id="name" maxlength="30"
-                       class="bg-gray-50 border @error('name') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       class="bg-white border @error('name') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        value="{{ $tool->name }}"
                        placeholder="" required>
             </div>
@@ -27,13 +28,15 @@
                 <label for="quantity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
                     จำนวนอุปกรณ์
                 </label>
-                @if ($errors->has('quantity'))
-                    <p class="text-red-600">
+
+                    <p class="text-red-600 min-h-[1em]">
+                        @if ($errors->has('quantity'))
                         โปรดใส่ให้ครบท้วนและใส่ได้ไม่เกิน 99999
+                        @endif
                     </p>
-                @endif
+
                 <input name="quantity" id="quantity" type="text" disabled
-                       class="bg-gray-50 border @error('quantity') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                       class="bg-white border @error('quantity') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                        value="{{ $tool->quantity }}"
                        placeholder="" required>
             </div>
@@ -44,7 +47,7 @@
                 </label>
                 <div class="relative z-0 mb-6 w-full group">
                     <select name="type" id="type"
-                            class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            class="w-full bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option value="{{ $tool->type }}" selected>{{ $tool->typeTranslator($tool->type) }}</option>
                         @foreach(\array_diff(array("fertilizer","pesticide","herbicide","etc.."), array( $tool->type ) ) as $type)
                             <option value="{{ $type }}">{{ $tool->typeTranslator($type) }}</option>
@@ -52,6 +55,7 @@
                     </select>
                 </div>
                 <button class="app-button mt-4" type="submit">แก้ไขอุปกรณ์</button>
+            </div>
         </form>
     </section>
 @endsection

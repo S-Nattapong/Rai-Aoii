@@ -128,7 +128,7 @@ class PostController extends Controller
         ]);
 
         $post->title = $request->input('title');
-        
+
 
         $post->save();
 
@@ -161,7 +161,7 @@ class PostController extends Controller
         $post->status = $request->get('status');
         if($request->get('status') == "Cancel"){
             $validated = $request->validate([
-                'reason' => ['required', 'min:1', 'max:30']
+                'reason' => ['required', 'min:1', 'max:70']
             ]);
             $result = "";
             $result .= $request->get('reason');

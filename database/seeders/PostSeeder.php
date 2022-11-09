@@ -21,12 +21,12 @@ class PostSeeder extends Seeder
             $post->title = "ข้อเสนอจากโรงน้ำตาล";
             $post->desired = Carbon::yesterday();
             $post->quantity = 5;
-            $post->deal_money = 2500;
-            $post->deposit_money = 5000;
+            $post->deal_money = 5000;
+            $post->deposit_money = 2500;
             $post->status = "Waiting";
             $post->user_id = 2;
             $post->save();
         }
-        
+
     }
 }
