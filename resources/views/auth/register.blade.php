@@ -45,7 +45,7 @@
                 <x-input id="password" class="block mt-1 w-full"
                          type="password"
                          name="password"
-                         required autocomplete="new-password" minlength="8" maxlength="30"/>
+                         required autocomplete="new-password" minlength="8" maxlength="20"/>
             </div>
 
             <!-- Confirm Password -->
@@ -54,7 +54,7 @@
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                          type="password"
-                         name="password_confirmation" required minlength="8" maxlength="30"/>
+                         name="password_confirmation" required minlength="8" maxlength="20"/>
             </div>
 
             <div class="mt-4">
@@ -67,7 +67,7 @@
 
                 <x-input id="id_cardcode" class="block mt-1 w-full"
                          type="text" pattern="[0-9]{13}" :value="old('id_cardcode')"
-                         name="id_cardcode" required maxlength="30"/>
+                         name="id_cardcode" required maxlength="14"/>
             </div>
 
             <div class="mt-4">

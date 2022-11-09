@@ -161,13 +161,13 @@ class PostController extends Controller
         $post->status = $request->get('status');
         if($request->get('status') == "Cancel"){
             $validated = $request->validate([
-                'reason' => ['required', 'min:1', 'max:50']
+                'reason' => ['required', 'min:1', 'max:30']
             ]);
             $result = "";
             $result .= $request->get('reason');
             if($request->get('reason') == "อื่น ๆ"){
                 $validated = $request->validate([
-                    'reason_etc' => ['required', 'min:1', 'max:50']
+                    'reason_etc' => ['required', 'min:1', 'max:40']
                 ]);
                 $result = "";
                 $result .= 'เพราะ ' . $request->input('reason_etc');

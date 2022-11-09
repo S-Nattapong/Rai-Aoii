@@ -16,10 +16,10 @@
                     </label>
                     @if ($errors->has('name'))
                         <p class="text-red-600">
-                            โปรดใส่ข้อมูลชื่ออุปกรณ์ให้ครบท้วนและใส่ได้ไม่กิน 40 ตัวอักษร
+                            โปรดใส่ข้อมูลชื่ออุปกรณ์ให้ครบท้วนและใส่ได้ไม่กิน 30 ตัวอักษร
                         </p>
                     @endif
-                    <input type="text" name="name" id="name" maxlength="40"
+                    <input type="text" name="name" id="name" maxlength="30"
                            class="bg-gray-50 border @error('name') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                            value="{{ old('name') }}"
                            placeholder="" required>
