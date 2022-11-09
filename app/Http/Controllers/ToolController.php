@@ -25,7 +25,7 @@ class ToolController extends Controller
     {
         $this->authorize('admin', Tool::class);
         $validated = $request->validate([
-            'name' => ['required', 'min:1', 'max:200'],
+            'name' => ['required', 'min:1', 'max:50'],
             'quantity' => ['required', 'min:1'],  
         ]);
 
@@ -62,7 +62,7 @@ class ToolController extends Controller
         $this->authorize('admin', Tool::class);
 
         $validated = $request->validate([
-            'name' => ['required', 'min:1', 'max:200']
+            'name' => ['required', 'min:1', 'max:50']
         ]);
 
         $tool->name = $request->input('name');
@@ -106,7 +106,7 @@ class ToolController extends Controller
         else{
             $validated = $request->validate([
                 'current_quantity' => ['required', 'min:1'],
-                'description' => ['required', 'min:1'],
+                'description' => ['required', 'min:1','max:50'],
                 'status' => ['required']
             ]);
             if($tool->quantity < $request->input('current_quantity')){

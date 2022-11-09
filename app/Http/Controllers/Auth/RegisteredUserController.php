@@ -34,8 +34,8 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:100'],
-            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
+            'name' => ['required', 'string', 'max:30'],
+            'email' => ['required', 'string', 'email', 'max:30', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'id_cardcode'=>['required','string', 'max:13','min:13',new CheckUniqueIdCardCode()],
             'phone_no' =>['required','string', 'max:12','min:12'],

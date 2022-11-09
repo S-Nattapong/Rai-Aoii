@@ -10,7 +10,7 @@
                    class="relative block p-6 w-full bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 ">
                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
                         รหัสอุปกรณ์ที่อัพเดท: {{ $history->tool_id }}
-                        <p class="absolute right-4 mt-2 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
+                        <p class="absolute right-4 mt-2 text-gray-800 text-xl font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
                         &nbsp;ประเภท : {{ $history->translateStatus($history) }}&nbsp;
                        
                     </p>

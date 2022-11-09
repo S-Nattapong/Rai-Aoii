@@ -43,7 +43,7 @@
                     </td>
                     <td class="p-3">
                         <p class="p-3">
-                            {{$tool->type}}
+                            {{$tool->typeTranslator($tool->type)}}
                         </p>
                     </td>
                         <td class="p-3">

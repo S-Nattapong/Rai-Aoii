@@ -59,7 +59,7 @@
                             </label>
                             @if ($errors->has('status'))
                                 <p class="text-red-600">
-                                    {{ $errors->first('status') }}
+                                    โปรดระบุประเภทการอัพเดทให้ครบท้วน
                                 </p>
                             @endif
                             <div class="relative z-0 mb-6 w-full group">
@@ -73,14 +73,13 @@
                             <div class="relative z-0 mb-6 w-full group">
                                 <label for="current_quantity"
                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                                    จำนวนที่เพิ่มหรือลดอุปกรณ์
+                                    จำนวนที่อัพเดทอุปกรณ์
                                 </label>
                                 @error('current_quantity')
-                                <p class="text-red-600">The current quantity must be less than or equal to Tool
-                                    quantity.</p>
+                                <p class="text-red-600">อุปกรณ์ที่มีอยู่ในคลังจะต้องไม่น้อยกว่าจำนวนที่ถูกนำไปใช้</p>
                                 @enderror
                                 <div class="relative z-0 mb-6 w-full group">
-                                    <input name="current_quantity" id="current_quantity" type="number" min="1"
+                                    <input name="current_quantity" id="current_quantity" type="number" min="1" max="9999"
                                            class="bg-gray-50 border @error('current_quantity') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                            placeholder="" required>
                                 </div>
@@ -91,11 +90,11 @@
                                     </label>
                                     @if ($errors->has('description'))
                                         <p class="text-red-600">
-                                            {{ $errors->first('description') }}
+                                            โปรดใส่ข้อมูลให้ครบท้วนและไม่เกิน 40 ตัวอักษร
                                         </p>
                                     @endif
                                     <div class="relative z-0 mb-6 w-full group">
-                                        <input name="description" id="description" type="text"
+                                        <input name="description" id="description" type="text" maxlength="40"
                                                class="bg-gray-50 border @error('description') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                placeholder="" required>
                                     </div>

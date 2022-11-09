@@ -7,7 +7,7 @@
             หัวข้อข้อเสนอ :{{ $post->title }}
         </h1>
         <div class="mb-4 justify-center items-center">
-            <p class="mt-2 bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
+            <p class="mt-2 bg-gray-100 text-gray-800 text-2xl font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">
                 @if($post->status === "Waiting")
                     <span style="color: #B9B9B9" class="material-symbols-outlined">radio_button_checked</span>
                 @elseif($post->status === "Received")
@@ -34,16 +34,16 @@
 
 
             <h5 class="text-xl mb-1">
-                เงินมัดจำ: {{ $post->deposit_money}}
+                เงินมัดจำ: {{ $post->deposit_money}} บาท
             </h5>
 
             <h5 class="text-xl mb-1">
-                ราคาที่ตกลงกันไว้: {{ $post->deal_money}}
+                เงินที่ต้องจ่ายทั้งหมดในข้อเสนอ: {{ $post->deal_money}} บาท
             </h5>
 
 
             <h5 class="text-xl mb-1">
-                ปริมาณที่ต้องการ: {{ $post->quantity}} ตัน
+                ปริมาณอ้อยที่ต้องการ: {{ $post->quantity}} ตัน
             </h5>
 
             <h5 class="text-xl mb-1">
@@ -86,7 +86,7 @@
                 </label>
                 @if ($errors->has('title'))
                     <p class="text-red-600">
-                        {{ $errors->first('title') }}
+                       กรุณาใส่ข้อมูลให้ครบถ้วน
                     </p>
                 @endif
                 <input type="text" name="contact" id="contact" value="{{ $post->user->email }}" disabled
@@ -96,32 +96,14 @@
                 @csrf
                 {{--                @method('PUT')--}}
                 <div class="p-2 rounded">
-                    @if ($errors->has('reason'))
-                        <p class="text-red-600">
-                            {{ $errors->first('reason') }}
-                        </p>
-                    @endif
-                    @if($post->status == "Progress")
-                        <label for="reason" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                            เหตุผล
-                        </label>
-                        <input type="text" name="reason" id="reason" value="{{old('reason')}}"
-                               class="bg-gray-50 border @error('reason') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    @elseif($post->status == "Completed" || $post->status == "Cancel")
-                        <label for="reason" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
-                            เหตุผล
-                        </label>
-                        <input type="text" name="reason" id="reason" value="{{ $post->reason }}" disabled
-                               class="bg-gray-50 border @error('reason') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    @endif
-                    <div class="p-2"></div>
+                    <div class="p-2 ">
                     <label for="reason" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300 ">
                         สถานะข้อเสนอ
                     </label>
                     <div class="grid grid-cols-2 gap-1">
                         <select name="status" id="status"
-                                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                            {{--                        <option value="Default" selected>เลือกสถานะ</option>--}}
+                                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                onchange="enablereason(this)">
                             <option value="{{ $post->status }}" selected>{{ $post->status }}</option>
                             @if($post->status === "Waiting")
                                 @foreach(\array_diff(array("Waiting","Progress"), array( $post->status ) ) as $status)
@@ -142,6 +124,76 @@
                             @endif
                         </select>
                     </div>
+                    </div>  
+                    @if ($errors->has('reason') ||$errors->has('reason_etc'))
+                        <p class="text-red-600">
+                            โปรดใส่ข้อมูลเหตุผลที่ปฏิเสธให้ครบถ้วน ถ้าเป็นเหตุผลอื่น ๆ โปรดระบุเพิ่มเติม
+                        </p>
+                    @endif
+                    @if($post->status == "Progress")
+                    <div  id="r-main" hidden >
+
+                    <label for="reason" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300 ">
+                        เหตุผลที่ปฏิเสธ
+                    </label>
+                    <select name="reason" id="reason"  onchange="enablereason(this)"
+                                class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option value="" selected disabled>-</option>
+                                <option value="เงินที่ต้องจ่ายทั้งหมดในข้อเสนอไม่เหมาะสม">เงินที่ต้องจ่ายทั้งหมดในข้อเสนอไม่เหมาะสม</option>
+                                <option value="เงินมัดจำน้อยกว่า 50 %">เงินมัดจำน้อยกว่า 50 %</option>
+                                <option value="เวลาที่ต้องการอ้อยช้าหรือเร็วไป">เวลาที่ต้องการอ้อยช้าหรือเร็วไป</option>
+                                <option value="ช่วงนี้โรคอ้อยระบาดไม่พร้อมปลูก">ช่วงนี้โรคอ้อยระบาดไม่พร้อมปลูก</option>
+                                <option value="พื้นที่ไม่พร้อมเพาะปลูก">พื้นที่ไม่พร้อมเพาะปลูก</option>
+                                <option value="อื่น ๆ">อื่น ๆ</option>
+                    </select>
+                    </div>
+                    <div class="r-none" id="r-none" hidden >
+                    <label for="reason_etc" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            เหตุผลเพิ่มเติม
+                        </label>
+                        <input type="text" name="reason_etc" id="reason_etc" value="{{old('reason_etc')}}" maxlength="30"
+                               class="bg-gray-50 border @error('reason_etc') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    @elseif(!is_null($post->reason) && $post->status == "Completed" || $post->status == "Cancel")
+                        <label for="reason" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                            เหตุผล
+                        </label>
+                        <input type="text" name="reason" id="reason" value="{{ $post->reason }}" disabled
+                               class="bg-gray-50 border @error('reason') border-red-600 @else border-gray-300 @enderror text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    @endif
+<script type="text/javascript">
+    var x = 1;
+    function enablereason(ans){
+    console.log(ans.value);
+    if(ans.value == "Completed" || ans.value == "Progress"){
+        document.getElementById('r-main').hidden = true;
+        document.getElementById('r-none').hidden = true;
+    }
+    else if(ans.value == "Cancel" && x == 0){
+        document.getElementById('r-main').hidden = false;
+        document.getElementById('r-none').hidden = false;
+    
+    }
+    else if(ans.value == "Cancel"){
+        document.getElementById('r-main').hidden = false;
+    
+    }
+    else if(ans.value == "อื่น ๆ"){
+        document.getElementById('r-none').hidden = false;
+        x = 0;
+    }
+    else{
+        document.getElementById('r-none').hidden = true;
+        x = 1;
+    }
+};
+    // function showDelete() {
+    //     document.getElementById("hidereason").hidden = false;
+    //     }
+    // function hideDelete() {
+    //     document.getElementById("hidereason").hidden = true;
+    //     }
+</script>
                     @if(!($post->status == "Completed" || $post->status == "Cancel"))
             <div class="inline-flex pt-3">
                         <button class="app-button px-3 inline-flex" type="submit"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square " viewBox="0 0 16 16">
@@ -149,11 +201,7 @@
                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/></svg>แก้ไขสถานะ</button>
             </div>
                     @endif
-                </div>
-                {{--                <p class="mt-4 bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2">--}}
-                {{--                    <span style="color: green" class="material-symbols-outlined md-18">adjust</span>--}}
-                {{--                    &nbsp;status: {{ $post->status }}--}}
-                {{--                </p>--}}
+                
             </form>
         </section>
     @endcan

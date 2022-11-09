@@ -37,6 +37,6 @@ class CheckUniqueIdCardCode implements Rule
      */
     public function message()
     {
-        return 'This ID card has already been used.';
+        return 'รหัสบัตรประชาชนนี้ถูกใช้ไปแล้ว';
     }
 }

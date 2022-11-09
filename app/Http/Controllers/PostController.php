@@ -53,11 +53,11 @@ class PostController extends Controller
         $this->authorize('create', Post::class);
 
         $validated = $request->validate([
-            'title' => ['required', 'min:5', 'max:100'],
+            'title' => ['required', 'min:5', 'max:50'],
             'quantity' => ['required', 'min:1', 'max:7'],
             'deposit_money' => ['required', 'min:1','lte:deal_money'],
             'deal_money' => ['required', 'min:1'],
-            'desired' => ['required','after:now']
+            'desired' => ['required','after:now','before:1year']
         ]);
 
         $post = new Post();
@@ -159,11 +159,20 @@ class PostController extends Controller
     public function updateStatus(Request $request, Post $post) {
 //        dd($request->get('status'));
         $post->status = $request->get('status');
-        if($request->get('status') == "Completed" ||$request->get('status') == "Cancel"){
-        $validated = $request->validate([
-            'reason' => ['required', 'min:1', 'max:200']
-        ]);
-        $post->reason = $request->input('reason');
+        if($request->get('status') == "Cancel"){
+            $validated = $request->validate([
+                'reason' => ['required', 'min:1', 'max:50']
+            ]);
+            $result = "";
+            $result .= $request->get('reason');
+            if($request->get('reason') == "อื่น ๆ"){
+                $validated = $request->validate([
+                    'reason_etc' => ['required', 'min:1', 'max:50']
+                ]);
+                $result = "";
+                $result .= 'เพราะ ' . $request->input('reason_etc');
+            }
+        $post->reason = $result;
         }
         $post->save();
         return redirect()->route('posts.show', ['post' => $post->id]);

@@ -9,14 +9,17 @@
         </x-slot>
 
         <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
+        
 
         <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
+        @if ($errors->has('email') || $errors->has('password'))
+                    <p class="text-red-600">
+                        Email หรือ Password ไม่ถูกต้อง
+                    </p>
+            @endif
         <form method="POST" action="{{ route('login') }}">
             @csrf
-
+            
             <!-- Email Address -->
             <div>
                 <x-label for="email" :value="__('Email')" />

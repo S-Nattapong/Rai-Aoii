@@ -16,10 +16,10 @@
                         จำนวนที่อัพเดท : {{ $history->quntityUpdate($history)}}
                         </p>
                     <p class="text-xl mt-3">
-                        จำนวนที่อัพเดทแล้ว : {{ $history->current_quantity}}
+                        จำนวนก่อนที่จะอัพเดท : {{ $history->old_quantity}}
                         </p>
                     <p class="text-xl mt-3">
-                        จำนวนก่อนที่จะอัพเดท : {{ $history->old_quantity}}
+                        จำนวนที่อัพเดทแล้ว : {{ $history->current_quantity}}
                         </p>
                     <p class="text-xl mt-3">
                         รายละเอียด : {{ $history->description}}

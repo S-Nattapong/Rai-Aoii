@@ -9,7 +9,7 @@
         </x-slot>
 
         <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
@@ -18,41 +18,56 @@
             <div>
                 <x-label for="name" :value="__('ชื่อ-นามสกุล')" />
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" maxlength="100" required autofocus />
+                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" maxlength="30" required autofocus />
             </div>
 
             <!-- Email Address -->
             <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
+            @if ($errors->has('email'))
+                    <p class="text-red-600">
+                    Email นี้ถูกใช้ไปแล้ว
+                    </p>
+                @endif
+                <x-label for="email" :value="__('Email :user@example.com')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" maxlength="30" required />
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+            @if ($errors->has('password'))
+                    <p class="text-red-600">
+                    Password ไม่ตรงกับที่ Confirm Password 
+                    </p>
+                @endif
+                <x-label for="password" :value="__('Password :ไม่น้อยกว่า 8 ตัว')" />
 
                 <x-input id="password" class="block mt-1 w-full"
                          type="password"
                          name="password"
-                         required autocomplete="new-password" />
+                         required autocomplete="new-password" minlength="8" maxlength="30"/>
             </div>
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                <x-label for="password_confirmation" :value="__('Confirm Password :ต้องตรงกับ Password')" />
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                          type="password"
-                         name="password_confirmation" required />
+                         name="password_confirmation" required minlength="8" maxlength="30"/>
             </div>
 
             <div class="mt-4">
-                <x-label for="id_cardcode" :value="__('รหัสบัตรประชาชน')" />
+            @if ($errors->has('id_cardcode'))
+                    <p class="text-red-600">
+                    {{ $errors->first('id_cardcode') }}
+                    </p>
+                @endif
+                <x-label for="id_cardcode" :value="__('รหัสบัตรประชาชน :Format เลข 13 หลัก :1234567890123')" />
 
                 <x-input id="id_cardcode" class="block mt-1 w-full"
                          type="text" pattern="[0-9]{13}" :value="old('id_cardcode')"
-                         name="id_cardcode" required />
+                         name="id_cardcode" required maxlength="30"/>
             </div>
 
             <div class="mt-4">
@@ -68,7 +83,7 @@
 
                 <textarea id="address" class="block mt-1 w-full"
                           type="text"
-                          name="address" required maxlength="200">{{old('address')}}</textarea>
+                          name="address" required maxlength="100">{{old('address')}}</textarea>
             </div>
 
             <div class="flex items-center justify-end mt-4">
